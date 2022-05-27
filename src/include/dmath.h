@@ -4,7 +4,7 @@
 float dm_avg(int arr[],int arr_size);
 float dm_med(int arr[],int arr_size);
 
-// TODOOOO: implement more functions
+// TODOOOO(#1): implement more functions
 
 #ifdef _DMATH_H_IMPL
 #include <math.h> // TODO: Only for floor so maybe we can implement our own floor??
