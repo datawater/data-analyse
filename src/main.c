@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
 	}
 	sel_sort(arr,arr_size(arr), arr_ap);
 
-	// TODOOO: Make a seperate function that prints all of the info
+	// TODOOO(#3): Make a seperate function that prints all of the info
 	/////////
 	printf("The Data:\n```\n");
 	for (int i = 0; i < arr_ap; ++i) {
