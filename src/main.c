@@ -42,6 +42,26 @@ void usage(char* pr_name) {
 	exit(0);
 }
 
+void print_info(int arr_[256], int arr_ap) {
+	int arr[256] = {0};
+	memcpy(arr,arr_,256);
+
+	printf("The Data:\n```\n");
+	for (int i = 0; i < arr_ap; ++i) {
+		printf("%i",arr[i]);
+		i != arr_ap-1 ? printf(", ") : printf("\n```\n");
+	}
+	sel_sort(arr,arr_size(arr), arr_ap);
+
+	printf("\n```\n~~~~~~\nThe Sorted Data:\n```\n");
+	for (int i = 0; i < arr_ap; ++i) {
+		printf("%i",arr[i]);
+		i != arr_ap-1 ? printf(", ") : printf("\n```\n");
+	}
+	printf("The Avg of this data is: %g\n", 	 dm_avg(arr,arr_ap));
+	printf("The median of this data is: %g\n",	 dm_med(arr,arr_ap));
+}
+
 int main(int argc, char** argv) {
 	Args cargs = parse_args(argc,argv);
 	if (cargs.Error == true) {
@@ -53,8 +73,7 @@ int main(int argc, char** argv) {
 	size_t len;
 	ssize_t bytes_read = getdelim(&buffer, &len, '\0', cargs.Input_File);
 
-	// FIXME: Make the compiler shut up and not give a warning about this
-	int arr[256] = {NULL};
+	int arr[256] = {0};
 	int arr_ap = 0;
 
 	bytes_read == -1 ? ERROR(strerror(errno)) : (void) 0;
@@ -64,17 +83,6 @@ int main(int argc, char** argv) {
 		arr[arr_ap] = atoi(ptr); arr_ap++;
 		ptr = strtok(NULL, ",");
 	}
-	sel_sort(arr,arr_size(arr), arr_ap);
 
-	// TODOOO(#3): Make a seperate function that prints all of the info
-	/////////
-	printf("The Data:\n```\n");
-	for (int i = 0; i < arr_ap; ++i) {
-		printf("%i, ",arr[i]);
-	}
-	printf("\n```\n");
-	printf("The Avg of this data is: %g\n", 	 dm_avg(arr,arr_ap));
-	printf("The Median of this data is: %g\n",   dm_med(arr,arr_ap));
-	/////////
-
+	print_info(arr,arr_ap);
 }

@@ -1,1 +1,5 @@
+# The binary output path
 out/
+
+# github.com/tsoding/snitch -- A very cool todo reporting tool
+.snitch.yaml
